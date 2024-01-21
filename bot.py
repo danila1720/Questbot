@@ -5,7 +5,7 @@ from info import Info, token
 from datasave import save_data, load_data
 import random
 
-bot = telebot.TeleBot("6047624895:AAGUBcu4kbuBkMaRl2MM54hsb3YHfteZqyM")
+bot = telebot.TeleBot()
 
 
 @bot.message_handler(commands=['start'])
@@ -29,22 +29,7 @@ def quest(message):
     inlinemarkup.add(InlineKeyboardButton('Да', callback_data='Да'),
                      InlineKeyboardButton('Неа', callback_data='Нет'))
     bot.send_message(message.chat.id, Info['commands']['quest'], reply_markup=inlinemarkup)
-    user_progress = {}
-    try:
-        if user_progress[str(message.chat.id)] in user_progress:
-            exit()
-    except KeyError:
-        user_progress.setdefault(message.chat.id, {
 
-            "progres": 1,  # прогресс по локациям
-            "hp": 100,  # здоровье персонажа
-            "damage": 10,  # урон наносимый персонажем
-            'dc': 10,  # death chance он же шанс смерти
-            "life": 1,  # кол-во жизней, если больше 1 то можно возродится на локации а не начинать заново
-            "weapon": "Нет",  #
-            "jewelery": "Нет",  #
-        })
-        save_data(user_progress, 'data.json')
 
 
 @bot.callback_query_handler(func=lambda call: call.data == "Да")
@@ -60,7 +45,7 @@ def return1(call):
         action.add(InlineKeyboardButton(1, callback_data="выбор1.1"),
                    InlineKeyboardButton(2, callback_data="выбор1.2"),
                    InlineKeyboardButton(3, callback_data="выбор1.3"))
-        bot.send_message(call.message.chat.id, f"Ваши действия?\n"
+        bot.send_photo(call.message.chat.id, Info['stages'][1][f'photo_{random.randint(1, 2)}'],f"Ваши действия?\n"
                                                f"1: {Info['stages'][1]['choice_1']}\n"
                                                f"2: {Info['stages'][1]['choice_2']}\n"
                                                f"3: {Info['stages'][1]['choice_3']}",
@@ -68,11 +53,11 @@ def return1(call):
     elif user_progress[str(call.message.chat.id)]['progres'] == 2:
         bot.send_message(call.message.chat.id,
                          "Вы выбрались из первой локации и перед вами предстает выбор: куда идти?")
-        bot.send_message(call.message.chat.id, f"1)Имя: {Info['stages'][2][1]['name']}\n"
+        bot.send_photo(call.message.chat.id, Info['stages'][2][1][f'photo_{random.randint(1, 2)}'], f"1)Имя: {Info['stages'][2][1]['name']}\n"
                                                f"Описание:{Info['stages'][2][1]['description']}")
-        bot.send_message(call.message.chat.id, f"2)Имя: {Info['stages'][2][2]['name']}\n"
+        bot.send_photo(call.message.chat.id, Info['stages'][2][2][f'photo_{random.randint(1, 2)}'], f"2)Имя: {Info['stages'][2][2]['name']}\n"
                                                f"Описание:{Info['stages'][2][2]['description']}")
-        bot.send_message(call.message.chat.id, f"3)Имя: {Info['stages'][2][3]['name']}\n"
+        bot.send_photo(call.message.chat.id, Info['stages'][2][3][f'photo_{random.randint(1, 2)}'], f"3)Имя: {Info['stages'][2][3]['name']}\n"
                                                f"Описание:{Info['stages'][2][3]['description']}")
         loc = InlineKeyboardMarkup(row_width=1)
         loc.add(InlineKeyboardButton("Тропа обречённых", callback_data="loc2.1"),
@@ -82,16 +67,16 @@ def return1(call):
     elif user_progress[str(call.message.chat.id)]['progres'] == 3:
         bot.send_message(call.message.chat.id,
                          "Вы выбрались из второй  локации и перед вами предстает выбор: куда идти?")
-        bot.send_message(call.message.chat.id, f"1)Имя: {Info['stages'][3][1]['name']}\n"
+        bot.send_photo(call.message.chat.id, Info['stages'][3][1][f'photo_{random.randint(1, 2)}'], f"1)Имя: {Info['stages'][3][1]['name']}\n"
                                                f"Описание:{Info['stages'][3][1]['description']}")
-        bot.send_message(call.message.chat.id, f"2)Имя: {Info['stages'][3][2]['name']}\n"
+        bot.send_photo(call.message.chat.id, Info['stages'][3][2][f'photo_{random.randint(1, 2)}'], f"2)Имя: {Info['stages'][3][2]['name']}\n"
                                                f"Описание:{Info['stages'][3][2]['description']}")
         loc = InlineKeyboardMarkup(row_width=1)
         loc.add(InlineKeyboardButton("Тюремные башни", callback_data="loc3.1"),
                 InlineKeyboardButton("Древние сточные канавы", callback_data="loc3.2"))
         bot.send_message(call.message.chat.id, f"Так куда идем?", reply_markup=loc)
     elif user_progress[str(call.message.chat.id)]['progres'] == 4:
-        bot.send_message(call.message.chat.id, f"Поздравляю вы дошли до финальной локации: {Info['stages'][4]['name']}"
+        bot.send_photo(call.message.chat.id, Info['stages'][4][f'photo_{random.randint(1, 2)}'], f"Поздравляю вы дошли до финальной локации: {Info['stages'][4]['name']}"
                                                f"описание локации: {Info['stages'][4]['description']}")
         bot.send_message(call.message.chat.id,
                          "На финальной локациии вас ждет битва с боссом если у вас достаточно характеристик вы победите"
@@ -115,27 +100,32 @@ def return1(call):
             bot.send_message(call.message.chat.id, "вы умерли из-за недостатка урона")
             user_progress[str(call.message.chat.id)]['progres'] = 0
             save_data(user_progress, 'data.json')
+    else:
+        user_progress.setdefault(call.message.chat.id, {
 
+            "progres": 1,  # прогресс по локациям
+            "hp": 100,  # здоровье персонажа
+            "damage": 10,  # урон наносимый персонажем
+            'dc': 10,  # death chance он же шанс смерти
+            "life": 1,  # кол-во жизней, если больше 1 то можно возродится на локации а не начинать заново
+            "weapon": "Нет",  #
+            "jewelery": "Нет",  #
+        })
+        save_data(user_progress, 'data.json')
+        bot.answer_callback_query(call.id, "Замечательно")
+        bot.send_message(call.message.chat.id, "Отлично начинаю квестирование")
+        bot.send_photo(call.message.chat.id, Info['stages'][1][f'photo_{random.randint(1, 2)}'], f"Вот название первой локации: {Info['stages'][1]['name']}"
+                                               f"И её описание: {Info['stages'][1]['description']}")
+        action = InlineKeyboardMarkup(row_width=3)
+        action.add(InlineKeyboardButton(1, callback_data="выбор1.1"),
+                   InlineKeyboardButton(2, callback_data="выбор1.2"),
+                   InlineKeyboardButton(3, callback_data="выбор1.3"))
+        bot.send_message(call.message.chat.id, f"Ваши действия?\n"
+                                               f"1: {Info['stages'][1]['choice_1']}\n"
+                                               f"2: {Info['stages'][1]['choice_2']}\n"
+                                               f"3: {Info['stages'][1]['choice_3']}",
+                         reply_markup=action)
 
-@bot.callback_query_handler(func=lambda call: call.data == 'Да')
-def questing(call):  # начало квеста
-    if call.data == "Да":
-        with open('data.json') as f:
-            user_progress = json.load(f)
-        if user_progress[str(call.message.chat.id)]['progres'] == 1:
-            bot.answer_callback_query(call.id, "Замечательно")
-            bot.send_message(call.message.chat.id, "Отлично начинаю квестирование")
-            bot.send_message(call.message.chat.id, f"Вот название первой локации: {Info['stages'][1]['name']}"
-                                                   f"И её описание: {Info['stages'][1]['description']}")
-            action = InlineKeyboardMarkup(row_width=3)
-            action.add(InlineKeyboardButton(1, callback_data="выбор1.1"),
-                       InlineKeyboardButton(2, callback_data="выбор1.2"),
-                       InlineKeyboardButton(3, callback_data="выбор1.3"))
-            bot.send_message(call.message.chat.id, f"Ваши действия?\n"
-                                                   f"1: {Info['stages'][1]['choice_1']}\n"
-                                                   f"2: {Info['stages'][1]['choice_2']}\n"
-                                                   f"3: {Info['stages'][1]['choice_3']}",
-                             reply_markup=action)
 
 
 @bot.callback_query_handler(func=lambda call: call.data == 'loc2.1' or call.data == 'loc2.2' or call.data == 'loc2.3')
@@ -206,7 +196,7 @@ def ending(call):  # последствия выбора действий на 3
             user_progress[str(call.message.chat.id)]['progres'] += 1
             save_data(user_progress, 'data.json')
     if user_progress[str(call.message.chat.id)]['progres'] == 4:
-        bot.send_message(call.message.chat.id, f"Поздравляю вы дошли до финальной локации: {Info['stages'][4]['name']}"
+        bot.send_photo(call.message.chat.id, Info['stages'][4][f'photo_{random.randint(1, 2)}'], f"Поздравляю вы дошли до финальной локации: {Info['stages'][4]['name']}"
                                                f"описание локации: {Info['stages'][4]['description']}")
         bot.send_message(call.message.chat.id,
                          "На финальной локациии вас ждет битва с боссом если у вас достаточно характеристик вы победите"
@@ -217,12 +207,20 @@ def ending(call):  # последствия выбора действий на 3
             if death <= user_progress[str(call.message.chat.id)]['dc']:
                 bot.send_message(call.message.chat.id, "вы умерли от случайности так что вам не повезло")
                 user_progress[str(call.message.chat.id)]['progres'] = 0
+                save_data(user_progress, 'data.json')
             else:
                 bot.send_message(call.message.chat.id, "Поздравляю вас вы победили финального босса и прошли квест")
-        elif user_progress[str(call.message.chat.id)]['hp'] < 60:
+                user_progress[str(call.message.chat.id)]['progres'] = 0
+                save_data(user_progress, 'data.json')
+        elif user_progress[str(call.message.chat.id)]['hp'] <= 60:
             bot.send_message(call.message.chat.id, "вы умерли из-за недостатка здоровья")
-        elif user_progress[str(call.message.chat.id)]['damage'] < 10:
+            user_progress[str(call.message.chat.id)]['progres'] = 0
+            save_data(user_progress, 'data.json')
+        elif user_progress[str(call.message.chat.id)]['damage'] <= 10:
             bot.send_message(call.message.chat.id, "вы умерли из-за недостатка урона")
+            user_progress[str(call.message.chat.id)]['progres'] = 0
+            save_data(user_progress, 'data.json')
+
 
 
 @bot.callback_query_handler(
@@ -265,9 +263,9 @@ def loc3(call):  # последствия выбора действия на в�
         if user_progress[str(call.message.chat.id)]['progres'] == 3:
             bot.send_message(call.message.chat.id,
                              "Вы выбрались из второй  локации и перед вами предстает выбор: куда идти?")
-            bot.send_message(call.message.chat.id, f"1)Имя: {Info['stages'][3][1]['name']}\n"
+            bot.send_photo(call.message.chat.id, Info['stages'][3][1][f'photo_{random.randint(1, 2)}'], f"1)Имя: {Info['stages'][3][1]['name']}\n"
                                                    f"Описание:{Info['stages'][3][1]['description']}")
-            bot.send_message(call.message.chat.id, f"2)Имя: {Info['stages'][3][2]['name']}\n"
+            bot.send_photo(call.message.chat.id, Info['stages'][3][2][f'photo_{random.randint(1, 2)}'], f"2)Имя: {Info['stages'][3][2]['name']}\n"
                                                    f"Описание:{Info['stages'][3][2]['description']}")
             loc = InlineKeyboardMarkup(row_width=1)
             loc.add(InlineKeyboardButton("Тюремные башни", callback_data="loc3.1"),
@@ -340,11 +338,11 @@ def loc2(call):  # последствия выбора действия в 1 л�
         if user_progress[str(call.message.chat.id)]['progres'] == 2:
             bot.send_message(call.message.chat.id,
                              "Вы выбрались из первой локации и перед вами предстает выбор: куда идти?")
-            bot.send_message(call.message.chat.id, f"1)Имя: {Info['stages'][2][1]['name']}\n"
+            bot.send_photo(call.message.chat.id, Info['stages'][2][1][f'photo_{random.randint(1, 2)}'], f"1)Имя: {Info['stages'][2][1]['name']}\n"
                                                    f"Описание:{Info['stages'][2][1]['description']}")
-            bot.send_message(call.message.chat.id, f"2)Имя: {Info['stages'][2][2]['name']}\n"
+            bot.send_photo(call.message.chat.id, Info['stages'][2][2][f'photo_{random.randint(1, 2)}'], f"2)Имя: {Info['stages'][2][2]['name']}\n"
                                                    f"Описание:{Info['stages'][2][2]['description']}")
-            bot.send_message(call.message.chat.id, f"3)Имя: {Info['stages'][2][3]['name']}\n"
+            bot.send_photo(call.message.chat.id, Info['stages'][2][3][f'photo_{random.randint(1, 2)}'], f"3)Имя: {Info['stages'][2][3]['name']}\n"
                                                    f"Описание:{Info['stages'][2][3]['description']}")
             loc = InlineKeyboardMarkup(row_width=1)
             loc.add(InlineKeyboardButton("Тропа обречённых", callback_data="loc2.1"),

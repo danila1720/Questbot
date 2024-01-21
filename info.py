@@ -18,7 +18,9 @@ Info = {
             "choice_1": "Быстро пробежаться по локации"
             ,
             "choice_2": "Аккуратно пройти до конца локации убивая всех монстров",
-            "choice_3": "не слишком быстро, но и не аккуратно пройти локацию исследовав её полнстью"
+            "choice_3": "не слишком быстро, но и не аккуратно пройти локацию исследовав её полнстью",
+            "photo_1": "https://disk.yandex.ru/i/5wsYTgjEGiUR3w",
+            "photo_2": "https://disk.yandex.ru/i/xTYOB1d2_MH2Hg"
 
         },
 
@@ -29,7 +31,9 @@ Info = {
                                "Теперь повсюду звучит лишь хриплое карканье ворон.",
                 "choice_1": "Поискать секреты",
                 "choice_2": "Исследовать локацию",
-                "choice_3": "Сражаться с монстрами"
+                "choice_3": "Сражаться с монстрами",
+                "photo_1":"https://disk.yandex.ru/i/aMEdT0X6iEX0gA",
+                "photo_2": "https://disk.yandex.ru/i/wUj-K6xxRVaW2Q"
             },
             2: {
                 "name": "Ядовитые сточные канавы",
@@ -37,7 +41,9 @@ Info = {
                                " Но никто еще не дошел до выхода.",
                 "choice_1": "Поискать секреты",
                 "choice_2": "Исследовать локацию",
-                "choice_3": "Сражаться с монстрами"
+                "choice_3": "Сражаться с монстрами",
+                "photo_1":"https://disk.yandex.ru/i/E1XIVYGEI-zfAw",
+                "photo_2": "https://disk.yandex.ru/i/R8cl-P5vMJxfrw"
 
             },
             3: {
@@ -46,6 +52,8 @@ Info = {
                 "choice_1": "Поискать секреты",
                 "choice_2": "Исследовать локацию",
                 "choice_3": "Сражаться с монстрами",
+                "photo_1": "https://disk.yandex.ru/i/OEGD9BU3wcOgyg",
+                "photo_2": "https://disk.yandex.ru/i/VRpsIdsVD7R7NA"
             },
         },
         3: {
@@ -58,6 +66,8 @@ Info = {
                 "choice_1": "Быстро пробежаться по локации",
                 "choice_2": "Аккуратно пройти до конца локации убивая всех монстров",
                 "choice_3": "не слишком быстро, но и не аккуратно пройти локацию исследовав её полнстью",
+                "photo_1": "https://disk.yandex.ru/i/2IQGY43GMKwYLA",
+                "photo_2": "https://disk.yandex.ru/i/SqeL53Wvg2rKHg"
 
             },
             2: {
@@ -67,15 +77,19 @@ Info = {
                 "choice_1": "Быстро пробежаться по локации",
                 "choice_2": "Аккуратно пройти до конца локации убивая всех монстров",
                 "choice_3": "не слишком быстро, но и не аккуратно пройти локацию исследовав её полнстью",
+                "photo_1": "https://disk.yandex.ru/i/VFLwa3MOJnMpPA",
+                "photo_2": "https://disk.yandex.ru/i/70asEdT6Y9E8cQ"
             },
         },
         4: {
             "name": "Черный мост",
             "description": "Выйти за стены тюрьмы — само по себе достижение. Перейти мост можно только чудом.",
+            "photo_1": "https://disk.yandex.ru/i/ycXJxyhv2h4oCQ",
+            "photo_2": "https://disk.yandex.ru/i/A6FWRdu7lCuRRA"
 
         }
     },
 
 }
 
-
+token = "6047624895:AAGUBcu4kbuBkMaRl2MM54hsb3YHfteZqyM"
