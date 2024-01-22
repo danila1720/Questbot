@@ -19,8 +19,8 @@ Info = {
             ,
             "choice_2": "Аккуратно пройти до конца локации убивая всех монстров",
             "choice_3": "не слишком быстро, но и не аккуратно пройти локацию исследовав её полнстью",
-            "photo_1": "https://disk.yandex.ru/i/5wsYTgjEGiUR3w",
-            "photo_2": "https://disk.yandex.ru/i/xTYOB1d2_MH2Hg"
+            "photo_1": "https://disk.yandex.ru/i/xCvc-i8F5KYuaw",
+            "photo_2": "https://disk.yandex.ru/i/Fjn31gfrb0Eiiw"
 
         },
 
@@ -32,8 +32,8 @@ Info = {
                 "choice_1": "Поискать секреты",
                 "choice_2": "Исследовать локацию",
                 "choice_3": "Сражаться с монстрами",
-                "photo_1":"https://disk.yandex.ru/i/aMEdT0X6iEX0gA",
-                "photo_2": "https://disk.yandex.ru/i/wUj-K6xxRVaW2Q"
+                "photo_1": "https://disk.yandex.ru/i/ETa-vRu9jqf3_w",
+                "photo_2": "https://disk.yandex.ru/i/oxNu_qAyVoA8jA"
             },
             2: {
                 "name": "Ядовитые сточные канавы",
@@ -42,8 +42,8 @@ Info = {
                 "choice_1": "Поискать секреты",
                 "choice_2": "Исследовать локацию",
                 "choice_3": "Сражаться с монстрами",
-                "photo_1":"https://disk.yandex.ru/i/E1XIVYGEI-zfAw",
-                "photo_2": "https://disk.yandex.ru/i/R8cl-P5vMJxfrw"
+                "photo_1": "https://disk.yandex.ru/i/n49ANYlGOrM6zA",
+                "photo_2": "https://disk.yandex.ru/i/jT-BPLBdI6CTmA"
 
             },
             3: {
@@ -52,8 +52,8 @@ Info = {
                 "choice_1": "Поискать секреты",
                 "choice_2": "Исследовать локацию",
                 "choice_3": "Сражаться с монстрами",
-                "photo_1": "https://disk.yandex.ru/i/OEGD9BU3wcOgyg",
-                "photo_2": "https://disk.yandex.ru/i/VRpsIdsVD7R7NA"
+                "photo_1": "https://disk.yandex.ru/i/9Bpry-tfG5CULQ",
+                "photo_2": "https://disk.yandex.ru/i/pRDaG5dgcJjxHQ"
             },
         },
         3: {
@@ -66,8 +66,8 @@ Info = {
                 "choice_1": "Быстро пробежаться по локации",
                 "choice_2": "Аккуратно пройти до конца локации убивая всех монстров",
                 "choice_3": "не слишком быстро, но и не аккуратно пройти локацию исследовав её полнстью",
-                "photo_1": "https://disk.yandex.ru/i/2IQGY43GMKwYLA",
-                "photo_2": "https://disk.yandex.ru/i/SqeL53Wvg2rKHg"
+                "photo_1": "https://disk.yandex.ru/i/cgZ6gr1WMH8iQQ",
+                "photo_2": "https://disk.yandex.ru/i/0HbKfVbi9oe0rg"
 
             },
             2: {
@@ -77,19 +77,18 @@ Info = {
                 "choice_1": "Быстро пробежаться по локации",
                 "choice_2": "Аккуратно пройти до конца локации убивая всех монстров",
                 "choice_3": "не слишком быстро, но и не аккуратно пройти локацию исследовав её полнстью",
-                "photo_1": "https://disk.yandex.ru/i/VFLwa3MOJnMpPA",
-                "photo_2": "https://disk.yandex.ru/i/70asEdT6Y9E8cQ"
+                "photo_1": "https://disk.yandex.ru/i/wTTR8ofXm8n9CA",
+                "photo_2": "https://disk.yandex.ru/i/X66dtIDr1m0NjQ"
             },
         },
         4: {
             "name": "Черный мост",
             "description": "Выйти за стены тюрьмы — само по себе достижение. Перейти мост можно только чудом.",
-            "photo_1": "https://disk.yandex.ru/i/ycXJxyhv2h4oCQ",
-            "photo_2": "https://disk.yandex.ru/i/A6FWRdu7lCuRRA"
+            "photo_1": "https://disk.yandex.ru/i/5AqkeInzHsoPPg",
+            "photo_2": "https://disk.yandex.ru/i/M_D8QTl2pLRCVQ"
 
         }
     },
 
 }
 
-token = "6047624895:AAGUBcu4kbuBkMaRl2MM54hsb3YHfteZqyM"
